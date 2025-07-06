@@ -47,13 +47,73 @@ Traditional calculus teaching often starts with abstract definitions and formula
 3. Interact with sliders, buttons, and visualizations
 4. Watch animations to see concepts in motion
 
+## 🚀 Firebase Deployment
+
+### For Contributors Who Want to Deploy to Firebase
+
+If you want to deploy Math Kitchen to Firebase Hosting, follow these steps:
+
+1. **Copy the environment template:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Install Firebase CLI (if not already installed):**
+   ```bash
+   npm install -g firebase-tools
+   firebase login
+   ```
+
+3. **Set up your Firebase project:**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project or select an existing one
+   - Enable Firebase Hosting
+   - Initialize Firebase in your project: `firebase init hosting`
+
+4. **Get your Firebase configuration:**
+   - In Firebase Console, go to Project Settings > General
+   - Scroll down to "Your Apps" section
+   - Click on the web app icon or create a new web app
+   - Copy the configuration values
+
+5. **Update your .env file:**
+   - Open the `.env` file you created
+   - Replace the placeholder values with your actual Firebase configuration:
+     ```
+     REACT_APP_FIREBASE_API_KEY=your_actual_api_key
+     REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+     REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+     # ... etc
+     ```
+
+6. **Deploy:**
+   ```bash
+   npm run build
+   firebase deploy
+   ```
+
+**Important Notes:**
+- Keep your `.env` file private and never commit it to version control
+- The `.env.example` file is safe to commit as it contains no sensitive data
+- All React environment variables must start with `REACT_APP_`
+
 ### File Structure
 ```
 math-kitchen/
-├── index.html          # Main application
-├── style.css           # Beautiful, responsive styling
-├── script.js           # Interactive functionality
-└── README.md           # This file
+├── public/
+│   ├── index.html          # Main HTML entry point
+│   └── newton-comic-*.png  # Educational illustrations
+├── src/
+│   ├── components/         # React components for each chapter
+│   ├── topics/            # Topic-specific components
+│   ├── styles/            # CSS styling
+│   ├── firebase.js        # Firebase configuration
+│   ├── App.js             # Main application component
+│   └── index.js           # React entry point
+├── .env.example           # Firebase environment template
+├── firebase.json          # Firebase hosting configuration
+├── package.json           # Dependencies and scripts
+└── README.md              # This documentation
 ```
 
 ## 🎓 Learning Journey
@@ -176,6 +236,14 @@ Possible additions for future versions:
 ## 🤝 Contributing
 
 This is an educational tool designed to make calculus more accessible. If you're an educator or student with ideas for improvement, contributions are welcome!
+
+### Development Setup
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm start`
+
+### Firebase Deployment
+See the [Firebase Deployment](#-firebase-deployment) section above for instructions on setting up your environment variables and deploying to Firebase Hosting.
 
 ## 📜 License
 
